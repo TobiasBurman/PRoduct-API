@@ -12,8 +12,8 @@ app.use(cors());
 
 app.use(express.json());
 
-const countriesRouter = require("./routes/countries");
-app.use("/countries", countriesRouter);
+const productsRouter = require("./routes/products");
+app.use("/products", productsRouter);
 
 
 

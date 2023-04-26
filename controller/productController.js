@@ -1,20 +1,20 @@
-const Country = require("../models/Country");
+const Product = require("../models/Product");
 
-module.exports.fetchAllcountries = async (req, res) => {
-  res.json(await Country.find());
+module.exports.fetchAllproducts = async (req, res) => {
+  res.json(await Product.find());
 };
 
-module.exports.fetchSpecificCountry = async (req, res) => {
+module.exports.fetchSpecificProduct = async (req, res) => {
   try {
-    res.send(await Country.findById(req.params.countryId));
+    res.send(await Product.findById(req.params.productId));
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports.createCountry = async (req, res) => {
+module.exports.createProduct = async (req, res) => {
   try {
-    const country = new Country({
+    const product = new Product({
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
@@ -22,24 +22,24 @@ module.exports.createCountry = async (req, res) => {
       category: req.body.category,
       image: req.body.image,
     });
-    res.send(await country.save());
+    res.send(await product.save());
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports.deleteCountry = async (req, res) => {
+module.exports.deleteProduct = async (req, res) => {
   try {
-    res.send(await Country.deleteOne({ _id: req.params.countryId }));
+    res.send(await Product.deleteOne({ _id: req.params.productId }));
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports.updateCountry = async (req, res) => {
+module.exports.updateProduct = async (req, res) => {
   try {
-    const updatedCountry = await Country.updateOne(
-      { _id: req.params.countryId },
+    const updatedProduct = await Product.updateOne(
+      { _id: req.params.productId },
       {
         $set: {
           title: req.body.title,
@@ -52,7 +52,7 @@ module.exports.updateCountry = async (req, res) => {
       }
     );
 
-    res.json(updatedCountry);
+    res.json(updatedProduct);
   } catch (error) {
     res.json({ message: error });
   }
