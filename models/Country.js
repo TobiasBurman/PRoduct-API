@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 // const { Schema } = mongoose;
 
-const ProductSchema = mongoose.Schema({
+const CountrySchema = mongoose.Schema({
   title: {
 
   type: String,
@@ -37,4 +37,4 @@ const ProductSchema = mongoose.Schema({
   
 });
 
-module.exports = mongoose.model("Product", ProductSchema)
+module.exports = mongoose.model("Country", CountrySchema)
